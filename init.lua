@@ -4,8 +4,8 @@ local config = {
       so=999,
     }
   },
-
-  -- Configure AstroNvim updates
+ 
+  -- -- Configure AstroNvim updates
   mappings = {
     -- first key is the mode
     n = {
