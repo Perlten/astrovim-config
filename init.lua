@@ -29,6 +29,7 @@ local config = {
       ["<leader>wsh"] = { ":split<CR>" },
       ["<leader>ww"] = { ":w<CR>" },
       ["<leader>wa"] = { ":wa<CR>" },
+      ["<leader>wq"] = { ":wq<CR>" },
       -- Window movement
       ["<leader>1"] = { ":1 wincmd w<CR>" },
       ["<leader>2"] = { ":2 wincmd w<CR>" },
