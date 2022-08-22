@@ -8,9 +8,14 @@ local null_ls_config = function(config) -- overrides `require("null-ls").setup(c
   config.sources = {
     -- Set a formatter
     formatting.black.with { extra_args = { "--line-length=79" } },
+    -- Lua
     null_ls.builtins.formatting.stylua,
+    -- Python
     null_ls.builtins.formatting.prettier,
     null_ls.builtins.diagnostics.flake8,
+    -- Bash
+    null_ls.builtins.formatting.shfmt,
+    null_ls.builtins.diagnostics.shellcheck,
   }
   -- set up null-ls's on_attach function
   -- NOTE: You can remove this on attach function to disable format on save

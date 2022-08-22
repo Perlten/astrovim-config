@@ -41,23 +41,6 @@ local config = {
       ["<leader>8"] = { ":8 wincmd w<CR>" },
       ["<leader>9"] = { ":9 wincmd w<CR>" },
       ["<leader><tab>"] = { "<c-w><c-p>" },
-      -- Vimspector
-      ["<leader>ee"] = { ":RangerWorkingDirectory<CR>" },
-      ["<leader>ec"] = { ":RangerCurrentFile<CR>" },
-      ["<leader>sc"] = { ":noh<CR>" },
-      ["<leader>dd"] = { ":call vimspector#Launch()<CR>" },
-      ["<leader>db"] = { ":call vimspector#ToggleBreakpoint()<CR>" },
-      ["<leader>dcb"] = { ":call vimspector#ToggleBreakpoint({ 'condition': '' })<left><left><left><left>" },
-      ["<leader>dj"] = { ":call vimspector#StepOver()<CR>" },
-      ["<leader>dl"] = { ":call vimspector#StepInto()<CR>" },
-      ["<leader>dh"] = { ":call vimspector#StepOut()<CR>" },
-      ["<leader>dx"] = { ":call vimspector#RunToCursor()<CR>" },
-      ["<leader>dc"] = { ":call vimspector#Continue()<CR>" },
-      ["<leader>dr"] = { ":call vimspector#Restart()<CR>" },
-      ["<leader>ds"] = { ":call vimspector#Stop()<CR>" },
-      ["<leader>dq"] = { ":VimspectorReset<CR>" },
-      ["<leader>dccb"] = { ":call vimspector#ClearBreakpoints()<CR>" },
-      ["<leader>di"] = { "<Plug>VimspectorBalloonEval" },
       -- LSP
       ["<leader>lgd"] = { ":lua vim.lsp.buf.definition()<cr>" },
       ["<leader>ll"] = { ":lua vim.lsp.buf.hover()<cr>" },
@@ -66,12 +49,15 @@ local config = {
       ["<M-S-k>"] = { ":m .-2<CR>==" },
       -- Disabled
       ["<leader>d"] = false,
+      ["<leader>ff"] = {
+        function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end,
+        desc = "Search all files",
+      },
     },
     i = {
       ["<M-s>"] = { "<Escape>" },
     },
     v = {
-      ["D"] = { '"_D' },
       -- Move lines up and down
       ["<M-S-j>"] = { ":m '>+1<CR>gv=gv" },
       ["<M-S-k>"] = { ":m '<-2<CR>gv=gv" },
@@ -84,6 +70,10 @@ local config = {
       -- Indent
       ["<Tab>"] = { ">gv" },
       ["<S-Tab>"] = { "<gv" },
+      -- No cut
+      ["d"] = { '"_d' },
+      ["c"] = { '"_c' },
+      ["D"] = { '"_D' },
     },
     t = {
       ["<M-s>"] = { "<C-\\><C-n>" },
@@ -106,6 +96,7 @@ local config = {
       { "ray-x/lsp_signature.nvim" },
       { "github/copilot.vim" },
       { "kamykn/spelunker.vim" },
+      { "akinsho/git-conflict.nvim" },
     },
     ["null-ls"] = require "user.plugins.null-ls",
   },
@@ -125,5 +116,8 @@ vim.g.ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 require "user.plugins.alpha"
 require "user.plugins.copilot"(config)
 require "user.plugins.lsp_signature"(config)
+require "user.plugins.telescope"(config)
+require "user.plugins.git-conflict"(config)
+require "user.plugins.vimspector"(config)
 
 return config
