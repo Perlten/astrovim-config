@@ -16,5 +16,13 @@ function Setup(config)
   config.mappings.n["<leader>dq"] = { ":VimspectorReset<CR>" }
   config.mappings.n["<leader>dccb"] = { ":call vimspector#ClearBreakpoints()<CR>" }
   config.mappings.n["<leader>di"] = { "<Plug>VimspectorBalloonEval" }
+
+  vim.g.vimspector_sign_priority = {
+    ["vimspectorBP"] = 999,
+    ["vimspectorBPCond"] = 999,
+    ["vimspectorBPLog"] = 999,
+    ["vimspectorBPDisabled"] = 999,
+    ["vimspectorPC"] = 999,
+  }
 end
 return Setup
