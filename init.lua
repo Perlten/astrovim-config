@@ -51,9 +51,7 @@ local config = {
       ["<leader>d"] = false,
       ["<leader>gc"] = false,
     },
-    i = {
-      ["<M-s>"] = { "<Escape>" },
-    },
+    i = {},
     v = {
       -- Move lines up and down
       ["<M-S-j>"] = { ":m '>+1<CR>gv=gv" },
@@ -73,14 +71,11 @@ local config = {
       ["D"] = { '"_D' },
     },
     t = {
-      ["<M-s>"] = { "<C-\\><C-n>" },
       ["<leader>tq"] = { "<C-\\><C-n>:q<CR>" },
       ["jk"] = false,
       ["<C-l>"] = false,
     },
-    c = {
-      ["<M-s>"] = { "<C-C>" },
-    },
+    c = {},
   },
   plugins = {
     init = {
@@ -95,6 +90,7 @@ local config = {
       { "kamykn/spelunker.vim" },
       { "akinsho/git-conflict.nvim" },
       { "tpope/vim-surround" },
+      { "easymotion/vim-easymotion" },
     },
     ["null-ls"] = require "user.plugins.null-ls",
   },
