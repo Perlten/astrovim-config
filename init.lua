@@ -49,10 +49,7 @@ local config = {
       ["<M-S-k>"] = { ":m .-2<CR>==" },
       -- Disabled
       ["<leader>d"] = false,
-      ["<leader>ff"] = {
-        function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end,
-        desc = "Search all files",
-      },
+      ["<leader>gc"] = false,
     },
     i = {
       ["<M-s>"] = { "<Escape>" },
@@ -94,7 +91,7 @@ local config = {
       { "rbgrouleff/bclose.vim" },
       { "puremourning/vimspector" },
       { "ray-x/lsp_signature.nvim" },
-      { "github/copilot.vim" },
+      -- { "github/copilot.vim" },
       { "kamykn/spelunker.vim" },
       { "akinsho/git-conflict.nvim" },
     },
@@ -114,7 +111,7 @@ vim.g.ranger_map_keys = 0
 vim.g.ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
 require "user.plugins.alpha"
-require "user.plugins.copilot"(config)
+-- require "user.plugins.copilot"(config)
 require "user.plugins.lsp_signature"(config)
 require "user.plugins.telescope"(config)
 require "user.plugins.git-conflict"(config)
