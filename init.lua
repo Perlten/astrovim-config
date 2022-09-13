@@ -108,14 +108,12 @@ local config = {
   },
 }
 
-vim.g.ranger_map_keys = 0
-vim.g.ranger_command_override = 'ranger --cmd "set show_hidden=true"'
-
 require "user.plugins.alpha"
 require "user.plugins.copilot"(config)
 require "user.plugins.lsp_signature"(config)
 require "user.plugins.telescope"(config)
 require "user.plugins.git-conflict"(config)
 require "user.plugins.vimspector"(config)
+require "user.plugins.ranger"(config)
 
 return config
