@@ -94,6 +94,7 @@ local config = {
       { "github/copilot.vim" },
       { "kamykn/spelunker.vim" },
       { "akinsho/git-conflict.nvim" },
+      { "tpope/vim-surround" },
     },
     ["null-ls"] = require "user.plugins.null-ls",
   },
