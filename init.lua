@@ -71,7 +71,7 @@ local config = {
       ["D"] = { '"_D' },
     },
     t = {
-      ["<leader>tq"] = { "<C-\\><C-n>:q<CR>" },
+      ["<leader>dq"] = { "<C-\\><C-n>:q<CR>" },
       ["jk"] = false,
       ["<C-l>"] = false,
     },
@@ -84,7 +84,7 @@ local config = {
       ["nvim-neo-tree/neo-tree.nvim"] = { disable = true },
       { "francoiscabrol/ranger.vim" },
       { "rbgrouleff/bclose.vim" },
-      { "puremourning/vimspector" },
+      { "puremourning/vimspector", tag = "*" },
       { "ray-x/lsp_signature.nvim" },
       { "github/copilot.vim" },
       { "kamykn/spelunker.vim" },
