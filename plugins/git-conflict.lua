@@ -1,5 +1,5 @@
 function Setup(config)
-  require("git-conflict").setup {
+  require("git-conflict").setup = {
     default_mappings = false,
   }
   config.mappings.n["<leader>gcl"] = { ":GitConflictListQf <CR>" }
