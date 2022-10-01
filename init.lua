@@ -88,17 +88,7 @@ local config = {
       { "francoiscabrol/ranger.vim" },
       { "rbgrouleff/bclose.vim" },
       { "puremourning/vimspector", tag = "*" },
-      {
-        "ray-x/lsp_signature.nvim",
-        config = function()
-          require("lsp_signature").setup = {
-            floating_window = false,
-            handler_opts = {
-              border = "none", -- double, rounded, single, shadow, none
-            },
-          }
-        end,
-      },
+      { "ray-x/lsp_signature.nvim" },
       { "github/copilot.vim" },
       { "kamykn/spelunker.vim" },
       {
