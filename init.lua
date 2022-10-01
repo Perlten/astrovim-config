@@ -108,7 +108,7 @@ local config = {
 			},
 			{ "tpope/vim-surround" },
 			{ "easymotion/vim-easymotion" },
-			{"nathom/filetype.nvim"}
+			{ "nathom/filetype.nvim" }
 		},
 		["null-ls"] = require("user.plugins.null-ls"),
 		["alpha"] = require("user.plugins.alpha"),

@@ -1,3 +1,4 @@
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local null_ls_config = function(config) -- overrides `require("null-ls").setup(config)`
   -- config variable is the default configuration table for the setup functino call
   local null_ls = require "null-ls"
@@ -16,18 +17,23 @@ local null_ls_config = function(config) -- overrides `require("null-ls").setup(c
     -- Bash
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.diagnostics.shellcheck,
+    -- C#
+    null_ls.builtins.formatting.csharpier,
   }
   -- set up null-ls's on_attach function
   -- NOTE: You can remove this on attach function to disable format on save
-  config.on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        desc = "Auto format before save",
-        pattern = "<buffer>",
-        callback = vim.lsp.buf.formatting_sync,
-      })
-    end
-  end
+   config.on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format({ bufnr = bufnr })
+                end,
+            })
+        end
+      end
   return config -- return final config table to use in require("null-ls").setup(config)
 end
 
