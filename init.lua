@@ -108,6 +108,7 @@ local config = {
 			},
 			{ "tpope/vim-surround" },
 			{ "easymotion/vim-easymotion" },
+			{"nathom/filetype.nvim"}
 		},
 		["null-ls"] = require("user.plugins.null-ls"),
 		["alpha"] = require("user.plugins.alpha"),
@@ -128,5 +129,7 @@ require("user.plugins.telescope")(config)
 require("user.plugins.git-conflict")(config)
 require("user.plugins.vimspector")(config)
 require("user.plugins.ranger")(config)
+
+vim.g.did_load_filetypes = 1
 
 return config
