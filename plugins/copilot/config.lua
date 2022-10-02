@@ -1,6 +1,5 @@
-function Setup(_)
-    vim.api.nvim_exec(
-        [[
+vim.api.nvim_exec(
+  [[
       augroup COMPE
 
       autocmd!
@@ -10,10 +9,7 @@ function Setup(_)
       augroup END
 
     ]],
-        false
-    )
-    vim.g.copilot_no_tab_map = true
-    vim.g.copilot_filetypes = {["*"] = true}
-end
-
-return Setup
+  false
+)
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_filetypes = { ["*"] = true }
