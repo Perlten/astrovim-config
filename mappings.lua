@@ -1,24 +1,5 @@
-return {
+local mappings = {
   n = {
-    -- Vimspector
-    ["<leader>sc"] = { ":noh<CR>" },
-    ["<leader>dd"] = { ":call vimspector#Launch()<CR>" },
-    ["<leader>db"] = { ":call vimspector#ToggleBreakpoint()<CR>" },
-    ["<leader>dcb"] = { ":call vimspector#ToggleBreakpoint({ 'condition': '' })<left><left><left><left>" },
-    ["<leader>dj"] = { ":call vimspector#StepOver()<CR>" },
-    ["<leader>dl"] = { ":call vimspector#StepInto()<CR>" },
-    ["<leader>dh"] = { ":call vimspector#StepOut()<CR>" },
-    ["<leader>dx"] = { ":call vimspector#RunToCursor()<CR>" },
-    ["<leader>dc"] = { ":call vimspector#Continue()<CR>" },
-    ["<leader>dr"] = { ":call vimspector#Restart()<CR>" },
-    ["<leader>ds"] = { ":call vimspector#Stop()<CR>" },
-    ["<leader>dq"] = { ":VimspectorReset<CR>" },
-    ["<leader>dccb"] = { ":call vimspector#ClearBreakpoints()<CR>" },
-    ["<leader>di"] = { "<Plug>VimspectorBalloonEval" },
-
-    -- Ranger
-    ["<leader>ee"] = { ":RangerWorkingDirectory<CR>" },
-    ["<leader>ec"] = { ":RangerCurrentFile<CR>" },
     -- Disabled
     ["<leader>d"] = false,
     ["<leader>gc"] = false,
@@ -61,22 +42,14 @@ return {
     ["<leader>lgd"] = { ":lua vim.lsp.buf.definition()<cr>" },
     ["<leader>ll"] = { ":lua vim.lsp.buf.hover()<cr>" },
     -- Move lines up and down
-    ["<M-S-j>"] = { ":m .+1<CR>==" },
-    ["<M-S-k>"] = { ":m .-2<CR>==" },
-
-    -- GitConflict
-    ["<leader>gcl"] = { ":GitConflictListQf <CR>" },
-    ["<leader>gco"] = { ":GitConflictChooseOurs <CR>" },
-    ["<leader>gct"] = { ":GitConflictChooseTheirs <CR>" },
-    ["<leader>gcb"] = { ":GitConflictChooseBoth<CR>" },
-    ["<leader>gcn"] = { ":GitConflictNextConflict<CR>" },
-    ["<leader>gcp"] = { ":GitConflictPrevConflict<CR>" },
+    ["<M-j>"] = { ":m .+1<CR>==" },
+    ["<M-k>"] = { ":m .-2<CR>==" },
   },
   i = {},
   v = {
     -- Move lines up and down
-    ["<M-S-j>"] = { ":m '>+1<CR>gv=gv" },
-    ["<M-S-k>"] = { ":m '<-2<CR>gv=gv" },
+    ["<M-j>"] = { ":m '>+1<CR>gv=gv" },
+    ["<M-k>"] = { ":m '<-2<CR>gv=gv" },
     ["<C-j>"] = { "10j" },
     ["<C-k>"] = { "10k" },
     ["<M-l>"] = { "$" },
@@ -98,3 +71,26 @@ return {
   },
   c = {},
 }
+
+local function tableMerge(t1, t2)
+    for k,v in pairs(t2) do
+        if type(v) == "table" then
+            if type(t1[k] or false) == "table" then
+                tableMerge(t1[k] or {}, t2[k] or {})
+            else
+                t1[k] = v
+            end
+        else
+            t1[k] = v
+        end
+    end
+    return t1
+end
+
+mappings = tableMerge(mappings, require("user.plugins.ranger.mappings"))
+mappings = tableMerge(mappings, require("user.plugins.vimspector.mappings"))
+mappings = tableMerge(mappings, require("user.plugins.git-conflict.mappings"))
+
+return mappings
+
+
