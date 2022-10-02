@@ -7,10 +7,6 @@ local config = {
       so = 999,
     },
   },
-  plugins = {
-    ["null-ls"] = require "user.plugins.null-ls",
-    ["alpha"] = require "user.plugins.alpha",
-  },
   cmp = {
     source_priority = {
       nvim_lsp = 1000,
@@ -20,10 +16,6 @@ local config = {
     },
   },
 }
-
--- require "user.plugins.copilot"(config)
--- require "user.plugins.telescope"(config)
--- require "user.plugins.vimspector"(config)
 
 vim.g.did_load_filetypes = 1
 
