@@ -1,0 +1,15 @@
+return {
+  ["akinsho/bufferline.nvim"] = { disable = true },
+  ["max397574/better-escape.nvim"] = { disable = true },
+  ["nvim-neo-tree/neo-tree.nvim"] = { disable = true },
+  { "francoiscabrol/ranger.vim" },
+  { "rbgrouleff/bclose.vim" },
+  { "puremourning/vimspector", tag = "*" },
+  ["ray-x/lsp_signature.nvim"] = require "user.plugins.lsp_signature",
+  ["akinsho/git-conflict.nvim"] = require "user.plugins.git-conflict",
+  { "github/copilot.vim" },
+  { "kamykn/spelunker.vim" },
+  { "tpope/vim-surround" },
+  { "easymotion/vim-easymotion" },
+  { "nathom/filetype.nvim" },
+}

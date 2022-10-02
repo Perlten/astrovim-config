@@ -81,28 +81,6 @@ local config = {
     c = {},
   },
   plugins = {
-    init = {
-      ["akinsho/bufferline.nvim"] = { disable = true },
-      ["max397574/better-escape.nvim"] = { disable = true },
-      ["nvim-neo-tree/neo-tree.nvim"] = { disable = true },
-      { "francoiscabrol/ranger.vim" },
-      { "rbgrouleff/bclose.vim" },
-      { "puremourning/vimspector", tag = "*" },
-      { "ray-x/lsp_signature.nvim" },
-      { "github/copilot.vim" },
-      { "kamykn/spelunker.vim" },
-      {
-        "akinsho/git-conflict.nvim",
-        config = function()
-          require("git-conflict").setup = {
-            default_mappings = false,
-          }
-        end,
-      },
-      { "tpope/vim-surround" },
-      { "easymotion/vim-easymotion" },
-      { "nathom/filetype.nvim" },
-    },
     ["null-ls"] = require "user.plugins.null-ls",
     ["alpha"] = require "user.plugins.alpha",
   },
@@ -117,9 +95,7 @@ local config = {
 }
 
 require "user.plugins.copilot"(config)
-require "user.plugins.lsp_signature"(config)
 require "user.plugins.telescope"(config)
-require "user.plugins.git-conflict"(config)
 require "user.plugins.vimspector"(config)
 require "user.plugins.ranger"(config)
 

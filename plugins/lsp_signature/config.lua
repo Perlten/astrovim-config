@@ -1,5 +1,3 @@
-function Setup(_) end
-
 local opts = {
   floating_window = false,
   handler_opts = {
@@ -7,4 +5,3 @@ local opts = {
   },
 }
 require("lsp_signature").setup(opts)
-return Setup
