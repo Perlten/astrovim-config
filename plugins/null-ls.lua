@@ -15,6 +15,8 @@ local null_ls_config = function(config) -- overrides `require("null-ls").setup(c
     null_ls.builtins.diagnostics.shellcheck,
     -- C#
     null_ls.builtins.formatting.csharpier,
+    -- Terraform
+    null_ls.builtins.formatting.terraform_fmt
   }
   return config -- return final config table to use in require("null-ls").setup(config)
 end
